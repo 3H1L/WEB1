@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<!--작성일_2020.10.21 작성자 : 홍승표-->
+<!--수정일_2020.10.23 수정자 : 홍승표-->
+
+<html>
+  <HEAD>
+    <title>2시에 만나요_개발사업공고확인</title>
+    <meta charset="utf-8">
+  </HEAD>
+
+  <BODY>
+    <h2 id='title' align="left"></h2>
+    <button id="myBtn" onclick="clickButton()">다열기</button><br/>
+    <div id='cityList'>
+    </div>
+	<script>
+
+		var object = {'name': '경기도', 'cityList':
+            [
+              {'name': '경기도청',    'url': 'https://www.gg.go.kr/'},
+              {'name': '서울특별시',  'url': 'https://www.seoul.go.kr/news/news_notice.do#list/1'},
+              {'name': '인천광역시',  'url': 'https://www.incheon.go.kr/IC010101'},
+              {'name': '가평군',      'url': 'https://www.gp.go.kr/portal/contents.do?key=502'},
+              {'name': '강화군',      'url': 'https://www.ganghwa.go.kr/open_content/main/ganghwa/news/announce.jsp'},
+              {'name': '고양시',      'url': 'http://www.goyang.go.kr/www/link/BD_notice.do'},
+              {'name': '구리시',      'url': 'http://www.guri.go.kr/cms/content/view/1676'},
+              {'name': '김포시',      'url': 'http://www.gimpo.go.kr/portal/ntfcPblancList.do?key=1004&cate_cd=1&searchCnd=40900000000'},
+              {'name': '군포시',      'url': 'http://www.gunpo.go.kr/www/contents.do?key=3907'},
+              {'name': '과천시',      'url': 'https://www.gccity.go.kr/main/page.do?mCode=B010030010&cIdx=465'},
+              {'name': '광명시',      'url': 'http://www.gm.go.kr/pt/user/nftcBbs/BD_selectNftcBbsList.do?q_nftcBbsCode=1001'},
+              {'name': '광주시',      'url': 'https://www.gjcity.go.kr/portal/saeol/gosi/list.do?mId=0202010000'},
+              {'name': '남양주시',    'url': 'https://www.nyj.go.kr/main/185'},
+              {'name': '동두천',      'url': 'https://www.ddc.go.kr/ddc/gosiList.do?key=107&code=01'},
+              {'name': '부천시',      'url': 'http://www.bucheon.go.kr/site/homepage/menu/viewMenu?menuid=148004008001'},
+              {'name': '성남시',      'url': 'https://www.seongnam.go.kr/city/1000499/20044/program.do'},
+              {'name': '이천시',      'url': 'https://www.icheon.go.kr/portal/selectNoticeWebList.do?key=1606&searchNotAncmtSeCd=01'},
+              {'name': '여주시',      'url': 'https://www.yeoju.go.kr/www/jsp/project/gosi/list.jsp'},
+              {'name': '안성시',      'url': 'https://www.anseong.go.kr/portal/saeol/gosiList.do?mId=0401040000'},
+              {'name': '안양시',      'url': 'https://www.anyang.go.kr/main/selectEminwonList.do?key=263&notAncmtSeCode=01,04&ofr_pageSize=10'},
+              {'name': '양주시',      'url': 'https://www.yangju.go.kr/www/contents.do?key=211'},
+              {'name': '의정부시',    'url': 'https://www.ui4u.go.kr/portal/saeol/gosiList.do?seCode=01&mId=0301040000'},
+              {'name': '의왕시',      'url': 'https://www.uiwang.go.kr/UWKORINFO0701'},
+              {'name': '용인시',      'url': 'http://www.yongin.go.kr/home/yiNw/yiNwStable/yiNwStable02/yiNwStable02_01.jsp'},
+              {'name': '안산시',      'url': 'https://www.ansan.go.kr/www/selectBbsNttList.do?bbsNo=373&key=271'},
+              {'name': '양평군',      'url': 'https://www.yp21.go.kr/www/selectBbsNttList.do?bbsNo=5&key=1119'},
+              {'name': '오산시',      'url': 'http://www.osan.go.kr/portal/saeol/gosi/list.do?mId=0302010000'},
+              {'name': '파주시',      'url': 'https://www.paju.go.kr/user/board/BD_board.list.do?bbsCd=1022&q_ctgCd=4063'},
+              {'name': '포천시',      'url': 'http://www.pocheon.go.kr/www/contents.do?key=5175&'},
+              {'name': '평택시',      'url': 'https://www.pyeongtaek.go.kr/pyeongtaek/saeol/gosiList.do?seCode=01&mId=0401020000'},
+              {'name': '화성시',      'url': 'http://www.hscity.go.kr/www/link/BD_notice.do'},
+              {'name': '하남시',      'url': 'https://www.hanam.go.kr/www/selectBbsNttList.do?bbsNo=30&key=170'},
+            ]
+          }
+
+        init();
+        function init() {
+        	document.getElementById('title').innerHTML = object['name'];
+         	var el = document.getElementById('cityList');
+            el.removeChild(el.childNodes[0]);
+            var html = '';
+            var ul = document.createElement('ul');
+            for (var i=0; i<object['cityList'].length; i++) {
+                var city = object['cityList'][i];
+                html += '<li><a id="a' + i + '" href="' + city['url'] + '" target="_blank">' + city['name'] + '</a></li>';
+            }
+			ul.innerHTML = html;
+            el.appendChild(ul);
+            console.log(ul);
+        }
+		function clickButton() {
+			var from = 0;
+			var to = object['cityList'].length;
+			for (var i=from; i<to; i++) {
+				var id = 'a'+i;
+				setTimeout(clickA, 1000*i, id);
+			}
+
+		}
+
+		function clickA(id) {
+        	console.log(id);
+			var el = document.getElementById(id);
+			console.log(el);
+			el.click();
+			//window.open(el.href, '_blank');
+		}
+	</script>
+
+
+  </BODY>
+</html>

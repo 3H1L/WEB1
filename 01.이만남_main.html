@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<!--작성일_2020.10.21 작성자 : 홍승표-->
+<!--수정일_2020.10.23 수정자 : 홍승표-->
+
+<html>
+  <HEAD>
+    <title>2시에 만나요_개발사업공고확인</title>
+    <meta charset="utf-8">
+	<style>
+		#list ul {
+		  list-style-type: none;
+		  margin: 0;
+		  padding: 0;
+		  overflow: hidden;
+		  background-color: #333333;
+		}
+
+		#list ul li {
+		  float: left;
+		}
+
+		#list ul li {
+		  cursor: pointer;
+		  display: block;
+		  color: white;
+		  text-align: center;
+		  padding: 16px;
+		  text-decoration: none;
+		}
+
+		#list ul li:hover {
+		  background-color: #111111;
+		}
+
+		#myIframe {
+		  display: block;
+		  border: none;
+		  height: 80vh;
+		  width: 100%;
+		}
+</style>
+  </HEAD>
+  <BODY>
+    <h1><a href="01.이만남_main.html"> 2시에 만나요_개발사업공고확인</a></h1>
+    <div id='list'>
+    </div>
+	<br>
+	<div id='content'>
+	<iframe id='myIframe'></iframe>
+	</div>
+
+    <!-- <h2 id='title' align="left"></h2> -->
+    <!-- <button id="myBtn" onclick="clickButton()">다열기</button><br/> -->
+    <!-- <div id='cityList'> -->
+    </div>
+	<script>
+
+        var arr = [
+          {'name': '경기도',   'url': '02.경기도.html'},
+          {'name': '충청도',   'url': '03.충청도.html'},
+          {'name': '전라남도', 'url': '04.전라남도.html'},
+          {'name': '전라북도', 'url': '05.전라북도.html'},
+          {'name': '경상남도', 'url': '06.경상남도.html'},
+          {'name': '경상북도', 'url': '07.경상북도.html'},
+          {'name': '강원도',   'url': '08.강원도.html'},
+          {'name': '공사',     'url': '09.공사.html'},
+          {'name': '국토부',   'url': '10.국토부.html'}];
+
+        var currentIndex = 0;
+        init();
+
+		function init() {
+          var el = document.getElementById('list');
+          var html = '';
+          var ul = document.createElement('ul');
+          for (var i=0; i<arr.length; i++) {
+              var object = arr[i];
+              html += '<li onclick="clickDo(' + i +')">' + object['name'] + '</li>';
+          }
+          ul.innerHTML = html;
+          el.appendChild(ul);
+          clickDo(currentIndex);
+        }
+
+        function clickDo(index) {
+        	var object = arr[index];
+         	var myIframe = document.getElementById('myIframe');
+			myIframe.src = object['url'];
+
+        }
+	</script>
+
+
+  </BODY>
+</html>

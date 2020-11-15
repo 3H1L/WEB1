@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<!--작성일_2020.10.21 작성자 : 홍승표-->
+<!--수정일_2020.10.23 수정자 : 홍승표-->
+
+<html>
+  <HEAD>
+    <title>2시에 만나요_개발사업공고확인</title>
+    <meta charset="utf-8">
+  </HEAD>
+
+  <BODY>
+    <h2 id='title' align="left"></h2>
+    <button id="myBtn" onclick="clickButton()">다열기</button><br/>
+    <div id='cityList'>
+    </div>
+	<script>
+
+		var object = {'name': '충청도', 'cityList':
+            [
+              {'name': '충청남도',      'url': 'http://www.chungnam.go.kr/cnnet/board.do?mnu_cd=CNNMENU00138'},
+              {'name': '충청북도',      'url': 'http://www.chungbuk.go.kr/www/index.do?firstFlag=no'},
+              {'name': '세종특별시자치',      'url': 'https://www.sejong.go.kr/index.jsp'},
+              {'name': '대전광역시',    'url': 'https://www.daejeon.go.kr/drh/board/boardNormalList.do?boardId=normal_0096&menuSeq=1631'},
+              {'name': '계룡시',      'url': 'https://www.gyeryong.go.kr/_prog/_board/?code=m4_10_02&site_dvs_cd=kr&menu_dvs_cd=030102'},
+              {'name': '공주시',      'url': 'https://www.gongju.go.kr/kr/index.do'},
+              {'name': '금산군',      'url': 'https://www.geumsan.go.kr/_prog/_board/?code=kr_sub03_030202&site_dvs_cd=kr&menu_dvs_cd=030202'},
+              {'name': '괴산군',      'url': 'https://www.goesan.go.kr/www/iframe.do?key=1438&url=https://eminwon.goesan.go.kr/emwp/jsp/ofr/OfrNotAncmtLSub.jsp?not_ancmt_se_code=01,02,03,04'},
+              {'name': '논산시',      'url': 'http://www.nonsan.go.kr/kor/html/sub03/030102.html'},
+              {'name': '당진시',      'url': 'http://www.dangjin.go.kr/kor/sub03_03_01_01.do'},
+              {'name': '단양군',    'url': 'https://www.danyang.go.kr/dy21/%EC%97%B4%EB%A6%B0%EB%A7%88%EB%8B%B9/%EC%95%8C%EB%A6%BC%EB%A7%88%EB%8B%B9/%EA%B3%A0%EC%8B%9C%EA%B3%B5%EA%B3%A0'},
+              {'name': '보은군',      'url': 'https://www.boeun.go.kr/www/selectBbsNttList.do?bbsNo=66&key=802'},
+              {'name': '보령시',    'url': 'http://www.brcn.go.kr/prog/eminwon/kor/BB/sub04_03_01/list.do'},
+              {'name': '부여군',      'url': 'http://www.buyeo.go.kr/_prog/_board/?code=news_02&site_dvs_cd=kr&menu_dvs_cd=0402'},
+              {'name': '서산시',      'url': 'http://www.seosan.go.kr/www/selectBbsNttList.do?bbsNo=97&key=1256'},
+              {'name': '서천군',  'url': 'http://www.seocheon.go.kr/kor/sub04_06_01.do'},
+              {'name': '아산시',      'url': 'https://www.asan.go.kr/main/cms/?no=257'},
+              {'name': '옥천군',      'url': 'https://www.oc.go.kr/www/selectBbsNttList.do?bbsNo=40&key=236&'},
+              {'name': '음성군',      'url': 'https://www.eumseong.go.kr/www/selectBbsNttList.do?bbsNo=6&key=78'},
+              {'name': '예산군',      'url': 'http://www.yesan.go.kr/kor/sub02_01_05.do'},
+              {'name': '영동군',      'url': 'https://www.yd21.go.kr/kr/html/sub02/020103.html'},
+              {'name': '진천군',      'url': 'http://www.jincheon.go.kr/home/sub.do?menukey=235'},
+              {'name': '제천시',      'url': 'https://www.jecheon.go.kr/www/webNotice.do?key=121&searchCnd2=1'},
+              {'name': '천안시',      'url': 'https://www.cheonan.go.kr/cop/bbs/BBSMSTR_000000000462/selectBoardList.do'},
+              {'name': '청양군',  'url': 'http://www.cheongyang.go.kr/kor/sub04_02_03.do'},
+              {'name': '청주시',      'url': 'https://www.cheongju.go.kr/www/selectBbsNttList.do?bbsNo=40&key=279'},
+              {'name': '충주시',      'url': 'https://www.chungju.go.kr/www/index.do'},
+              {'name': '태안군',      'url': 'http://www.taean.go.kr/kor/sub02_03_01.do'},
+              {'name': '홍성군',      'url': 'http://www.hongseong.go.kr/cop/bbs/BBSMSTR_000000000094/selectBoardList.do'},
+            ]
+          }
+
+        init();
+        function init() {
+        	document.getElementById('title').innerHTML = object['name'];
+         	var el = document.getElementById('cityList');
+            el.removeChild(el.childNodes[0]);
+            var html = '';
+            var ul = document.createElement('ul');
+            for (var i=0; i<object['cityList'].length; i++) {
+                var city = object['cityList'][i];
+                html += '<li><a id="a' + i + '" href="' + city['url'] + '" target="_blank">' + city['name'] + '</a></li>';
+            }
+			ul.innerHTML = html;
+            el.appendChild(ul);
+            console.log(ul);
+        }
+		function clickButton() {
+			var from = 0;
+			var to = object['cityList'].length;
+			for (var i=from; i<to; i++) {
+				var id = 'a'+i;
+				setTimeout(clickA, 1000*i, id);
+			}
+
+		}
+
+		function clickA(id) {
+        	console.log(id);
+			var el = document.getElementById(id);
+			console.log(el);
+			el.click();
+			//window.open(el.href, '_blank');
+		}
+	</script>
+
+
+  </BODY>
+</html>

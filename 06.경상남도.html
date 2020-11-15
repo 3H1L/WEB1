@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<!--작성일_2020.10.21 작성자 : 홍승표-->
+<!--수정일_2020.10.23 수정자 : 홍승표-->
+
+<html>
+  <HEAD>
+    <title>2시에 만나요_개발사업공고확인</title>
+    <meta charset="utf-8">
+  </HEAD>
+
+  <BODY>
+    <h2 id='title' align="left"></h2>
+    <button id="myBtn" onclick="clickButton()">다열기</button><br/>
+    <div id='cityList'>
+    </div>
+	<script>
+
+		var object = {'name': '경상남도', 'cityList':
+            [
+              {'name': '경상남도',      'url': 'https://gbgs.go.kr/open_content/ko/page.do?mnu_uid=2159'},
+              {'name': '부산광역시',      'url': 'http://www.busan.go.kr/nbnews'},
+              {'name': '울산광역시',      'url': 'https://www.ulsan.go.kr/rep/notice'},
+              {'name': '김해시',      'url': 'http://www.gimhae.go.kr/main.web'},
+              {'name': '거제시',      'url': 'http://www.geoje.go.kr/board/list.geoje?boardId=BBS_0000008&menuCd=DOM_000008902001001000'},
+              {'name': '밀양시',      'url': 'https://www.miryang.go.kr/web/index.do'},
+              {'name': '사천시',      'url': 'https://www.sacheon.go.kr/news/00009/00014.web'},
+              {'name': '양산시',      'url': 'https://www.yangsan.go.kr/main.do'},
+              {'name': '진주시',      'url': 'http://www.jinju.go.kr/main.web'},
+              {'name': '창원시',      'url': 'https://www.changwon.go.kr/portal/bbs/list.do?ptIdx=100&mId=0201010000'},
+              {'name': '통영시',      'url': 'https://www.tongyeong.go.kr/00852/00853/00858.web'},
+              {'name': '제주특별자치도',      'url': 'https://www.jeju.go.kr/index.htm'},
+              {'name': '제주시',      'url': 'http://www.jejusi.go.kr/index.ac'},
+              {'name': '서귀포시',      'url': 'https://www.seogwipo.go.kr/index.htm'},
+              {'name': '거창군',      'url': 'http://www.geochang.go.kr/saeol/gosi.do?&pageCd=NW0102000000&siteGubun=news'},
+              {'name': '고성군',      'url': 'https://www.goseong.go.kr/index.goseong?menuCd=DOM_000000104001001002'},
+              {'name': '남해군',      'url': 'http://www.namhae.go.kr/news/Index.do?c=NW0103000000'},
+              {'name': '산청군',      'url': 'https://www.sancheong.go.kr/www/index.do'},
+              {'name': '의령군',      'url': 'http://www.uiryeong.go.kr/board/list.uiryeong?boardId=BBS_0000070&menuCd=DOM_000000403010001001&contentsSid=606&cpath='},
+              {'name': '창녕군',      'url': 'https://www.cng.go.kr/news/00000372/00000373.web'},
+              {'name': '함양군',      'url': 'http://www.hygn.go.kr/media/00111/00114.web'},
+              {'name': '합천군',      'url': 'https://www.hc.go.kr/04923/04924/04945.web'},
+              {'name': '하동군',      'url': 'http://www.hadong.go.kr/media/00008/00009.web'},
+            ]
+          }
+
+        init();
+        function init() {
+        	document.getElementById('title').innerHTML = object['name'];
+         	var el = document.getElementById('cityList');
+            el.removeChild(el.childNodes[0]);
+            var html = '';
+            var ul = document.createElement('ul');
+            for (var i=0; i<object['cityList'].length; i++) {
+                var city = object['cityList'][i];
+                html += '<li><a id="a' + i + '" href="' + city['url'] + '" target="_blank">' + city['name'] + '</a></li>';
+            }
+			ul.innerHTML = html;
+            el.appendChild(ul);
+			      console.log(ul);
+        }
+		function clickButton() {
+			var from = 0;
+			var to = object['cityList'].length;
+			for (var i=from; i<to; i++) {
+				var id = 'a'+i;
+				setTimeout(clickA, 1000*i, id);
+			}
+
+		}
+
+		function clickA(id) {
+        	console.log(id);
+			var el = document.getElementById(id);
+			console.log(el);
+			el.click();
+			//window.open(el.href, '_blank');
+		}
+	</script>
+
+
+  </BODY>
+</html>

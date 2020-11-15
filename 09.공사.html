@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<!--작성일_2020.10.21 작성자 : 홍승표-->
+<!--수정일_2020.11.12 수정자 : 홍승표-->
+
+<html>
+  <HEAD>
+    <title>2시에 만나요_개발사업공고확인</title>
+    <meta charset="utf-8">
+  </HEAD>
+
+  <BODY>
+    <h2 id='title' align="left"></h2>
+    <button id="myBtn" onclick="clickButton()">다열기</button><br/>
+    <div id='cityList'>
+    </div>
+	<script>
+
+		var object = {'name': '공사', 'cityList':
+            [
+              {'name': '부산도시공사',      'url': 'https://www.bmc.busan.kr/bmc/main.do'},
+              {'name': '김포도시관리공사',      'url': 'https://www.guc.or.kr/index.asp?'},
+              {'name': '주택도시보증공사',      'url': 'http://www.khug.or.kr/index.jsp'},
+              {'name': 'SH서울주택도시공사',      'url': 'https://www.i-sh.co.kr/main/index.do'},
+              {'name': '경기주택도시공사',      'url': 'https://www.gh.or.kr/index.do'},
+              {'name': '대전도시공사',      'url': 'http://www.dcco.kr/web/board/list.do?mId=113'},
+              {'name': 'LH한국토지주택공사',      'url': 'http://www.lh.or.kr/bbs/list.do?sCode=user&mId=122&mPid=120&bbsSeq=&nttSeq='},
+              {'name': '광주광역시도시공사',      'url': 'http://www.gmcc.co.kr/new/'},
+              {'name': '대구도시공사',      'url': 'https://www.duco.or.kr/'},
+              {'name': '대구도시철도공사',      'url': 'http://www.dtro.or.kr/'},
+              {'name': '성남도시개발공사',      'url': 'http://www.isdc.co.kr/'},
+              {'name': '인천도시공사',      'url': 'http://www.imcd.co.kr/open_content/main/'},
+              {'name': '하남도시공사',      'url': 'https://www.huic.co.kr/www/index.do'},
+              {'name': '한국농어촌공사',      'url': 'https://www.ekr.or.kr/homepage/main.krc'},
+              {'name': '한국도로공사',      'url': 'http://www.ex.co.kr/'},
+              {'name': '화성도시공사',      'url': 'https://www.hsuco.or.kr/main.do'},
+              {'name': '남양주도시공사',      'url': 'https://www.ncuc.or.kr/main/1'},
+              {'name': '한국철도공사',      'url': 'http://info.korail.com/mbs/www/index.jsp'},
+              {'name': '국가철도공단',      'url': 'http://www.kr.or.kr/boardCnts/list.do?boardID=51&m=040101&s=krhome'},
+              {'name': '부산항만공사',      'url': 'https://www.busanpa.com/kor/Main.do'},
+              {'name': '새만금개발공사',      'url': 'https://sdco.or.kr/portal/kor/main/main.do;jsessionid=0723735F1906689400944F2339653905'},
+              {'name': '새만금개발청',      'url': 'http://www.saemangeum.go.kr/sda/cmm/main/mainPage.do'},
+              {'name': '수원도시공사',      'url': 'https://www.suwonudc.co.kr/mainPage.do#'},
+              {'name': '화성산업단지관리사업소',      'url': 'https://hsidc.hsuco.or.kr/lmth/05_news/notice.asp'},
+              {'name': 'ALIO_공공기관 경영정보 공개시스템',      'url': 'http://www.alio.go.kr/informationBid.do'},
+              {'name': '클린아이_지방공공기관통합공시',      'url': 'http://www.cleaneye.go.kr/index.jsp'},
+            ]
+          }
+
+        init();
+        function init() {
+        	document.getElementById('title').innerHTML = object['name'];
+         	var el = document.getElementById('cityList');
+            el.removeChild(el.childNodes[0]);
+            var html = '';
+            var ul = document.createElement('ul');
+            for (var i=0; i<object['cityList'].length; i++) {
+                var city = object['cityList'][i];
+                html += '<li><a id="a' + i + '" href="' + city['url'] + '" target="_blank">' + city['name'] + '</a></li>';
+            }
+			ul.innerHTML = html;
+            el.appendChild(ul);
+            console.log(ul);
+        }
+		function clickButton() {
+			var from = 0;
+			var to = object['cityList'].length;
+			for (var i=from; i<to; i++) {
+				var id = 'a'+i;
+				setTimeout(clickA, 1000*i, id);
+			}
+
+		}
+
+		function clickA(id) {
+        	console.log(id);
+			var el = document.getElementById(id);
+			console.log(el);
+			el.click();
+			//window.open(el.href, '_blank');
+		}
+	</script>
+
+
+  </BODY>
+</html>

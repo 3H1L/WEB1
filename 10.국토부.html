@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<!--작성일_2020.10.21 작성자 : 홍승표-->
+<!--수정일_2020.10.23 수정자 : 홍승표-->
+
+<html>
+  <HEAD>
+    <title>2시에 만나요_개발사업공고확인</title>
+    <meta charset="utf-8">
+  </HEAD>
+
+  <BODY>
+    <h2 id='title' align="left"></h2>
+    <button id="myBtn" onclick="clickButton()">다열기</button><br/>
+    <div id='cityList'>
+    </div>
+	<script>
+
+		var object = {'name': '국토부', 'cityList':
+            [
+              {'name': '국토교통부',      'url': 'http://www.molit.go.kr/portal.do'},
+              {'name': '서울지방국토관리청',      'url': 'http://www.molit.go.kr/srocm/intro.do'},
+              {'name': '부산지방국토관리청',      'url': 'http://www.molit.go.kr/brocm/intro.do'},
+              {'name': '대전지방국토관리청',      'url': 'http://www.molit.go.kr/drocm/intro.do'},
+              {'name': '원주지방국토관리청',      'url': 'http://www.molit.go.kr/wrocm/intro.do'},
+              {'name': '익산지방국토관리청',      'url': 'http://www.molit.go.kr/irocm/intro.do'},
+            ]
+          }
+
+        init();
+        function init() {
+        	document.getElementById('title').innerHTML = object['name'];
+         	var el = document.getElementById('cityList');
+            el.removeChild(el.childNodes[0]);
+            var html = '';
+            var ul = document.createElement('ul');
+            for (var i=0; i<object['cityList'].length; i++) {
+                var city = object['cityList'][i];
+                html += '<li><a id="a' + i + '" href="' + city['url'] + '" target="_blank">' + city['name'] + '</a></li>';
+            }
+			ul.innerHTML = html;
+            el.appendChild(ul);
+            console.log(ul);
+        }
+		function clickButton() {
+			var from = 0;
+			var to = object['cityList'].length;
+			for (var i=from; i<to; i++) {
+				var id = 'a'+i;
+				setTimeout(clickA, 1000*i, id);
+			}
+
+		}
+
+		function clickA(id) {
+        	console.log(id);
+			var el = document.getElementById(id);
+			console.log(el);
+			el.click();
+			//window.open(el.href, '_blank');
+		}
+	</script>
+
+
+  </BODY>
+</html>

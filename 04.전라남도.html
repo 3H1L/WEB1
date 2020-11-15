@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<!--작성일_2020.10.21 작성자 : 홍승표-->
+<!--수정일_2020.10.23 수정자 : 홍승표-->
+
+<html>
+  <HEAD>
+    <title>2시에 만나요_개발사업공고확인</title>
+    <meta charset="utf-8">
+  </HEAD>
+
+  <BODY>
+    <h2 id='title' align="left"></h2>
+    <button id="myBtn" onclick="clickButton()">다열기</button><br/>
+    <div id='cityList'>
+    </div>
+	<script>
+
+		var object = {'name': '전라남도', 'cityList':
+            [
+              {'name': '전라남도청',      'url': 'https://www.jeonnam.go.kr/J0203/boardList.do?menuId=jeonnam0203000000'},
+              {'name': '광주광역시',      'url': 'https://www.gwangju.go.kr/contentsView.do?pageId=www71'},
+              {'name': '광양시',      'url': 'http://www.gwangyang.go.kr/board/list.gwangyang?boardId=BBS_0000107&menuCd=DOM_000000103004002000&contentsSid=1809&cpath='},
+              {'name': '나주시',      'url': 'http://www.naju.go.kr/www/administration/notice/legislation'},
+              {'name': '순천시',      'url': 'http://www.suncheon.go.kr/kr/news/0004/0005/0001/'},
+              {'name': '여수시',      'url': 'http://www.yeosu.go.kr/www/information/mn01/mn0105/mn010501'},
+              {'name': '목포시',      'url': 'http://www.mokpo.go.kr/www/open_administration/city_news/notification'},
+              {'name': '신안군',      'url': 'http://www.shinan.go.kr/home/www/openinfo/participation_07/participation_07_04/page.wscms'},
+              {'name': '진도군',      'url': 'https://www.jindo.go.kr/home/gosi/general.cs?m=24'},
+              {'name': '완도군',      'url': 'http://www.wando.go.kr/www/administration/administration_info/announcement_notice'},
+              {'name': '장성군',      'url': 'http://www.jangseong.go.kr/home/www/news/jangseong/announcement'},
+              {'name': '영광군',      'url': 'https://www.yeonggwang.go.kr/subpage/?site=headquarter&mn=1076'},
+              {'name': '함평군',      'url': 'https://www.hampyeong.go.kr/pg/GosiList.do?pageId=www273'},
+              {'name': '무안군',      'url': 'http://www.muan.go.kr/www/openmuan/new/announcement'},
+              {'name': '영암군',      'url': 'https://www.yeongam.go.kr/home/www/open_information/yeongam_news/announcement'},
+              {'name': '해남군',      'url': 'http://www.haenam.go.kr/planweb/board/list.9is?contentUid=18e3368f5d745106015de961fbbd205e&boardUid=18e3368f644b01470164eeb23d7b30f5&contentUid=18e3368f5d745106015de961fbbd205e'},
+              {'name': '강진군',      'url': 'http://www.gangjin.go.kr/www/government/notify'},
+              {'name': '장흥군',      'url': 'http://www.jangheung.go.kr/www/organization/news/notification'},
+              {'name': '화순군',      'url': 'https://www.hwasun.go.kr/index.do?S=S01'},
+              {'name': '보성군',      'url': 'http://www.boseong.go.kr/www/open_administration/city_news/notification'},
+              {'name': '고흥군',      'url': 'https://www.goheung.go.kr/boardList.do?pageId=www96&boardId=BD_00018'},
+              {'name': '구례군',      'url': 'https://www.gurye.go.kr/board/GosiList.do?menuNo=115004002000'},
+              {'name': '곡성군',      'url': 'https://www.gokseong.go.kr/main/?pid=651'},
+              {'name': '담양군',      'url': 'http://www.damyang.go.kr/index.damyang?menuCd=DOM_000000104002001000'},
+            ]
+          }
+
+        init();
+        function init() {
+        	document.getElementById('title').innerHTML = object['name'];
+         	var el = document.getElementById('cityList');
+            el.removeChild(el.childNodes[0]);
+            var html = '';
+            var ul = document.createElement('ul');
+            for (var i=0; i<object['cityList'].length; i++) {
+                var city = object['cityList'][i];
+                html += '<li><a id="a' + i + '" href="' + city['url'] + '" target="_blank">' + city['name'] + '</a></li>';
+            }
+			ul.innerHTML = html;
+            el.appendChild(ul);
+            console.log(ul);
+        }
+		function clickButton() {
+			var from = 0;
+			var to = object['cityList'].length;
+			for (var i=from; i<to; i++) {
+				var id = 'a'+i;
+				setTimeout(clickA, 1000*i, id);
+			}
+
+		}
+
+		function clickA(id) {
+        	console.log(id);
+			var el = document.getElementById(id);
+			console.log(el);
+			el.click();
+			//window.open(el.href, '_blank');
+		}
+	</script>
+
+
+  </BODY>
+</html>

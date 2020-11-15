@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<!--작성일_2020.10.21 작성자 : 홍승표-->
+<!--수정일_2020.10.23 수정자 : 홍승표-->
+
+<html>
+  <HEAD>
+    <title>2시에 만나요_개발사업공고확인</title>
+    <meta charset="utf-8">
+  </HEAD>
+
+  <BODY>
+    <h2 id='title' align="left"></h2>
+    <button id="myBtn" onclick="clickButton()">다열기</button><br/>
+    <div id='cityList'>
+    </div>
+	<script>
+
+		var object = {'name': '경상북도', 'cityList':
+            [
+              {'name': '경상북도',      'url': 'http://www.gb.go.kr/Main/index.html'},
+              {'name': '대구광역시',      'url': 'http://www.daegu.go.kr/index.do?menu_id=00000854&menu_link=/icms/bbs/selectBoardList.do?bbsId=BBS_00029'},
+              {'name': '경산시',      'url': 'https://gbgs.go.kr/open_content/ko/page.do?mnu_uid=2159'},
+              {'name': '경주시',      'url': 'http://www.gyeongju.go.kr/open_content/ko/page.do?mnu_uid=423&'},
+              {'name': '김천시',      'url': 'https://www.gc.go.kr/main.do'},
+              {'name': '구미시',      'url': 'http://www.gumi.go.kr/portal/saeol/gosiList.do?seCode=01&mId=0401030000'},
+              {'name': '문경시',      'url': 'https://www.gbmg.go.kr/portal/saeol/gosi/list.do?mId=0301060000'},
+              {'name': '상주시',      'url': 'https://www.sangju.go.kr/board/list.tc?mn=3032&mngNo=726&pageSeq=2613'},
+              {'name': '안동시',      'url': 'https://www.andong.go.kr/portal/bbs/list.do?ptIdx=156&mId=0401010000'},
+              {'name': '영주시',      'url': 'http://www.yeongju.go.kr/open_content/main/page.do?mnu_uid=1522'},
+              {'name': '영천시',      'url': 'https://www.yc.go.kr/portal/saeol/gosi/list.do?mId=0301040000'},
+              {'name': '고령군',      'url': 'http://www.goryeong.go.kr/kor/boardList.do?IDX=154&BRD_ID=1023'},
+              {'name': '군위군',      'url': 'https://www.gunwi.go.kr/ko/page.do?mnu_uid=170'},
+              {'name': '달성군',      'url': 'https://www.dalseong.daegu.kr/index.do?menu_id=00000194'},
+              {'name': '봉화군',      'url': 'http://www.bonghwa.go.kr/open.content/ko/news/news/announcement/bonghwa/'},
+              {'name': '성주군',      'url': 'https://www.sj.go.kr/page.do?mnu_uid=1044'},
+              {'name': '울진군',      'url': 'http://www.uljin.go.kr/index.uljin?menuCd=DOM_000000103002007000'},
+              {'name': '울주군',      'url': 'https://www.ulju.ulsan.kr/ulju/gosi01'},
+              {'name': '영양군',      'url': 'http://www.yyg.go.kr/www/organization/yyg_news/notification'},
+              {'name': '예천군',      'url': 'http://www.ycg.kr/open.content/ko/administrative/news/announcement/'},
+              {'name': '청송군',      'url': 'http://www.cs.go.kr/news/00002679/00006203.web'},
+              {'name': '청도군',      'url': 'http://www.cheongdo.go.kr/open.content/ko/administration/news/announcement/'},
+              {'name': '칠곡군',      'url': 'https://www.chilgok.go.kr/01partin/01_02.jsp'},
+            ]
+          }
+
+        init();
+        function init() {
+        	document.getElementById('title').innerHTML = object['name'];
+         	var el = document.getElementById('cityList');
+            el.removeChild(el.childNodes[0]);
+            var html = '';
+            var ul = document.createElement('ul');
+            for (var i=0; i<object['cityList'].length; i++) {
+                var city = object['cityList'][i];
+                html += '<li><a id="a' + i + '" href="' + city['url'] + '" target="_blank">' + city['name'] + '</a></li>';
+            }
+			ul.innerHTML = html;
+            el.appendChild(ul);
+	          console.log(ul);
+        }
+		function clickButton() {
+			var from = 0;
+			var to = object['cityList'].length;
+			for (var i=from; i<to; i++) {
+				var id = 'a'+i;
+				setTimeout(clickA, 1000*i, id);
+			}
+
+		}
+
+		function clickA(id) {
+        	console.log(id);
+			var el = document.getElementById(id);
+			console.log(el);
+			el.click();
+			//window.open(el.href, '_blank');
+		}
+	</script>
+
+
+  </BODY>
+</html>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<!--작성일_2020.10.21 작성자 : 홍승표-->
+<!--수정일_2020.10.23 수정자 : 홍승표-->
+
+<html>
+  <HEAD>
+    <title>2시에 만나요_개발사업공고확인</title>
+    <meta charset="utf-8">
+  </HEAD>
+
+  <BODY>
+    <h2 id='title' align="left"></h2>
+    <button id="myBtn" onclick="clickButton()">다열기</button><br/>
+    <div id='cityList'>
+    </div>
+	<script>
+
+		var object = {'name': '강원도', 'cityList':
+            [
+              {'name': '강원도청',      'url': 'http://www.provin.gangwon.kr/gw/portal/sub05_02'},
+              {'name': '강릉시',      'url': 'https://www.gn.go.kr/www/selectGosiNttList.do?key=263&searchGosiSe=01,04,06'},
+              {'name': '고성군',      'url': 'https://www.gwgs.go.kr/kor/sub03_0201.do'},
+              {'name': '동해시',      'url': 'http://www.dh.go.kr/pages/sub.htm?nav_code=dh1470757772'},
+              {'name': '삼척시',      'url': 'http://www.samcheok.go.kr/media/00084/00095.web'},
+              {'name': '속초시',      'url': 'http://www.sokcho.go.kr/portal/openinfo/sokchonews/notification'},
+              {'name': '양구군',      'url': 'https://www.yanggu.go.kr/user_sub.php?gid=www&mu_idx=215'},
+              {'name': '양양군',      'url': 'https://www.yangyang.go.kr/gw/portal/yyc_news_notifi'},
+              {'name': '인제군',      'url': 'http://www.inje.go.kr/portal/adm/bulletin'},
+              {'name': '영월군',      'url': 'https://www.yw.go.kr/www/selectBbsNttList.do?bbsNo=17&key=273'},
+              {'name': '원주시',      'url': 'https://www.wonju.go.kr/www/selectBbsNttList.do?bbsNo=141&key=217&'},
+              {'name': '정선군',      'url': 'https://www.jeongseon.go.kr/portal/openadmin/adminnews/notification'},
+              {'name': '춘천시',      'url': 'http://www.chuncheon.go.kr/index.chuncheon?menuCd=DOM_000000505003001000'},
+              {'name': '철원군',      'url': 'http://www.cwg.go.kr/site/www/boardList.do?boardSeq=23&key=1240&part=4300030'},
+              {'name': '태백시',      'url': 'https://www.taebaek.go.kr/www/selectBbsNttList.do?bbsNo=25&key=352'},
+              {'name': '평창군',      'url': 'https://www.pc.go.kr/portal/government/government-notification'},
+              {'name': '화천군',      'url': 'http://www.ihc.go.kr/www/contents.do?key=1004'},
+              {'name': '홍천군',      'url': 'https://www.hongcheon.go.kr/www/selectBbsNttList.do?key=255&bbsNo=1'},
+              {'name': '횡성군',      'url': 'https://www.hsg.go.kr/intro/media/00000074.web'},
+            ]
+          }
+
+        init();
+        function init() {
+        	document.getElementById('title').innerHTML = object['name'];
+         	var el = document.getElementById('cityList');
+            el.removeChild(el.childNodes[0]);
+            var html = '';
+            var ul = document.createElement('ul');
+            for (var i=0; i<object['cityList'].length; i++) {
+                var city = object['cityList'][i];
+                html += '<li><a id="a' + i + '" href="' + city['url'] + '" target="_blank">' + city['name'] + '</a></li>';
+            }
+			ul.innerHTML = html;
+            el.appendChild(ul);
+            console.log(ul);
+        }
+		function clickButton() {
+			var from = 0;
+			var to = object['cityList'].length;
+			for (var i=from; i<to; i++) {
+				var id = 'a'+i;
+				setTimeout(clickA, 1000*i, id);
+			}
+
+		}
+
+		function clickA(id) {
+        	console.log(id);
+			var el = document.getElementById(id);
+			console.log(el);
+			el.click();
+			//window.open(el.href, '_blank');
+		}
+	</script>
+
+
+  </BODY>
+</html>
